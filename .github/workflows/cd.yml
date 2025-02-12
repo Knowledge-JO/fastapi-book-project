@@ -32,5 +32,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+          tags: phen0mena1/hng12-stage2-fastapiwithnginx:latest
           labels: ${{ steps.metadata.outputs.labels }}
