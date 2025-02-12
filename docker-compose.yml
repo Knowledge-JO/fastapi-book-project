@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     image: phen0mena1/hng12-stage2-fastapiwithnginx:latest
-    container_name: fastapi-books
+    container_name: fastapi-book-container
     ports:
       - "3000:3000"
     restart: unless-stopped
