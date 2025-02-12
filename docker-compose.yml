@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  web:
+    image: phen0mena1/hng12-stage2-fastapiwithnginx:latest
+    container_name: fastapi-books
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "100k"
+
+  nginx:
+    restart: unless-stopped
+    image: nginx
+    container_name: nginx
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+
+    depends_on:
+      - web
+
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "100k"
