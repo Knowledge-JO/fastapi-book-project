@@ -40,6 +40,9 @@ async def create_book(book: Book):
         status_code=status.HTTP_201_CREATED, content=book.model_dump()
     )
 
+@router.get("/api_status", status_code=status.HTTP_200_OK)
+async def api_status():
+    return {"status": "Active"}
 
 @router.get(
     "/", response_model=OrderedDict[int, Book], status_code=status.HTTP_200_OK
@@ -71,6 +74,3 @@ async def delete_book(book_id: int) -> None:
     return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
 
 
-@router.get("/api_status", status_code=status.HTTP_200_OK)
-async def api_status():
-    return {"status": "Active"}
