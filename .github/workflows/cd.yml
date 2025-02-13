@@ -6,7 +6,7 @@ on:
     types: ["closed"]
 
 jobs:
-  build_and_push:
+  deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     name: Push docker image to Docker Hub
@@ -34,13 +34,6 @@ jobs:
           push: true
           tags: phen0mena1/hng12-stage2-fastapiwithnginx:latest
           labels: ${{ steps.metadata.outputs.labels }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build_and_push]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
       - name: Copy file via ssh key
         uses: appleboy/scp-action@v0.1.4
         with:
