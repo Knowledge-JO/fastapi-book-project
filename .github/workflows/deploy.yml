@@ -1,4 +1,4 @@
-name: CD fastapi app workflow
+name: deploy
 
 on:
   pull_request:
