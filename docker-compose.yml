@@ -1,9 +1,7 @@
-version: "3"
-
 services:
-  web:
-    image: phen0mena1/hng12-stage2-fastapiwithnginx:latest
+  app:
     container_name: fastapi-book-container
+    build: .
     ports:
       - "3000:3000"
     restart: unless-stopped
@@ -24,7 +22,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
 
     depends_on:
-      - web
+      - app
 
     logging:
       driver: "json-file"
